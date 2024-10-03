@@ -1,0 +1,19 @@
+{
+  "name": "express-crud-generator",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.0",
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  }
+}
