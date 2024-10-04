@@ -4,8 +4,9 @@ const path = require('path');
 // Function to generate and save controller to file system
 const generateControllerFile = (tableName, fields, directories) => {
     const controllerCode = `
-const db = require('../config/db');
 
+    const { getDB } = require('../config/db');
+    const db = getDB(); 
 // CRUD functions for ${tableName}
 const create = (req, res) => {
     const data = req.body;

@@ -1,4 +1,4 @@
-# Express CRUD Generator
+# Express CRUD AUTO
 
 express-crud-auto automates the creation of RESTful routes and controllers for your Express application. This package enables you to easily set up CRUD (Create, Read, Update, Delete) operations with minimal configuration, allowing you to focus on your application logic rather than boilerplate code.
 
