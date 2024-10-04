@@ -1,17 +1,22 @@
-Express CRUD Generator
-Overview
+# Express CRUD Generator
 
 express-crud-auto automates the creation of RESTful routes and controllers for your Express application. This package enables you to easily set up CRUD (Create, Read, Update, Delete) operations with minimal configuration, allowing you to focus on your application logic rather than boilerplate code.
-Installation
+
+## Installation
 
 To install the package, run:
 
+
+```bash
 npm install express-crud-auto
 
-Usage
+```
+
+## Usage
 Step 1: Define Your Models
 
 Create a directory named models at the root of your repository. Inside this directory, create a models array with the desired structure:
+```javascript
 const models = [
     {
         name: 'users',
@@ -31,10 +36,12 @@ const models = [
     }
 ];
 module.exports=models
+```
 
 Step 2: Connect to the Database
 Create a directory named config at the root of your repository. Inside this directory,
 file named db.js, handle your MySQL connection as follows:
+```javascript
 const mysql = require('mysql');
 
 let db;
@@ -62,10 +69,11 @@ module.exports = {
     getDB
 };
 
+```
 Step 3: Set Up Your Application
 
 In app.js, set up your Express app and use the generator:
-// app.js
+```javascript
 const express = require('express');
 const crudGenerator = require('express-crud-auto');
 const models = require("./models/models")
@@ -86,6 +94,11 @@ app.listen(3000, () => {
     console.log('Server running on port 3000');
 });
 
-Conclusion
+```
+## Conclusion
 
 With express-crud-auto, you can quickly build a RESTful API and manage your database models with ease. This tool saves you time and effort, allowing you to focus on the ultimate functionality of your application. Delve into the customization options for even more control over your CRUD operations!
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
