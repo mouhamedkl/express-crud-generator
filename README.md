@@ -1,6 +1,6 @@
 # Express CRUD AUTO
 
-express-crud-auto automates the creation of RESTful routes and controllers for your Express application. This package enables you to easily set up CRUD (Create, Read, Update, Delete) operations with minimal configuration, allowing you to focus on your application logic rather than boilerplate code.
+express-crud-gen automates the creation of RESTful routes and controllers for your Express application. This package enables you to easily set up CRUD (Create, Read, Update, Delete) operations with minimal configuration, allowing you to focus on your application logic rather than boilerplate code.
 
 ## Installation
 
@@ -8,7 +8,7 @@ To install the package, run:
 
 
 ```bash
-npm install express-crud-auto
+npm install express path mysql express-crud-gen
 
 ```
 
@@ -74,12 +74,14 @@ Step 3: Set Up Your Application
 
 In app.js, set up your Express app and use the generator:
 ```javascript
+// app.js
 const express = require('express');
-const crudGenerator = require('express-crud-auto');
+const crudGenerator = require('express-crud-gen');
 const models = require("./models/models")
 const { connectDB, getDB } = require("./config/db")
+const path = require("path")
 const app = express();
-
+app.use(express.json());
 // MySQL database configuration
 const dbConfig = {
     host: 'localhost',
@@ -90,14 +92,22 @@ const dbConfig = {
 connectDB(dbConfig)
 // Generate CRUD routes for the models and ensure tables are created
 crudGenerator(getDB(),models, { baseDir: __dirname });
+const routesDir = path.join(__dirname, 'routes');
+models.forEach(model => {
+    const routePath = path.join(routesDir, `${model.name}Routes.js`);
+    console.log(`/api/${model.name}`);
+    
+    app.use(`/api/${model.name}`, require(routePath));
+});
 app.listen(3000, () => {
     console.log('Server running on port 3000');
 });
 
+
 ```
 ## Conclusion
 
-With express-crud-auto, you can quickly build a RESTful API and manage your database models with ease. This tool saves you time and effort, allowing you to focus on the ultimate functionality of your application. Delve into the customization options for even more control over your CRUD operations!
+With express-crud-gen, you can quickly build a RESTful API and manage your database models with ease. This tool saves you time and effort, allowing you to focus on the ultimate functionality of your application. Delve into the customization options for even more control over your CRUD operations!
 
 ## License
 
